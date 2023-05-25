@@ -94,7 +94,7 @@
                     </div>
                     <input
                       type="text"
-                      class="form-control form-control-solid"
+                      class="form-control form-control-solid-bg"
                       placeholder=""
                       name="first_name"
                     />
@@ -107,7 +107,7 @@
                   <!--end::Input-->
                   <input
                     type="text"
-                    class="form-control form-control-solid"
+                    class="form-control form-control-solid-bg"
                     placeholder=""
                     name="last_name"
                   />
@@ -122,7 +122,7 @@
                   <!--end::Label-->
                   <!--begin::Input-->
                   <input
-                    class="form-control form-control-solid"
+                    class="form-control form-control-solid-bg"
                     placeholder=""
                     name="email"
                   />
@@ -139,7 +139,7 @@
                   <!--end::Input-->
                   <input
                     type="text"
-                    class="form-control form-control-solid"
+                    class="form-control form-control-solid-bg"
                     placeholder=""
                     name="phone"
                   />
@@ -153,9 +153,18 @@
                   <label class="required fs-3 fw-semibold mb-2">อายุ</label>
                   <input
                     type="text"
-                    class="form-control form-control-solid"
+                    class="form-control form-control-solid-bg"
                     placeholder=""
                     name="age"
+                  />
+                </div>
+                <div class="col-md-6 fv-row">
+                  <label class="fs-3 fw-semibold mb-2">ยอดเงินลงทุน</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-solid-bg"
+                    placeholder=""
+                    name="init_investment"
                   />
                 </div>
               </div>
@@ -169,7 +178,7 @@
                     type="text"
                     name="line"
                     id="line"
-                    class="form-control form-control-solid social"
+                    class="form-control form-control-solid-bg social"
                   />
                 </div>
               </div>
@@ -182,7 +191,7 @@
                     type="text"
                     name="facebook"
                     id="facebook"
-                    class="form-control form-control-solid social"
+                    class="form-control form-control-solid-bg social"
                   />
                 </div>
               </div>
@@ -190,14 +199,21 @@
                 <div class="col-md-12 fv-row">
                   <label for="telegram" class="required fs-3 fw-semibold mb-2"
                     >Telegram</label
-                  ><span class="d-block text-gray-600 text-xs"
-                    >เพื่อใช้เข้าห้อง Signal</span
+                  ><span class="text-gray-600 text-xs"></span>
+                    (เพื่อใช้เข้าห้อง Signal)</span
+                  >
+                  <a
+                    href="assets/media/create_telegram_account.pdf"
+                    target="_blank"
+                    title="ขั้นตอนสมัคร Telegram"
+                    class="d-block mb-2"
+                    >ขั้นตอนสมัคร Telegram</a
                   >
                   <input
                     type="text"
                     name="telegram"
                     id="telegram"
-                    class="form-control form-control-solid"
+                    class="form-control form-control-solid-bg"
                   />
                 </div>
               </div>
@@ -295,7 +311,7 @@
                   >
                   <input
                     type="text"
-                    class="form-control form-control-solid"
+                    class="form-control form-control-solid-bg"
                     placeholder=""
                     name="broker"
                   />
@@ -334,7 +350,7 @@
                   >
                     <span class="indicator-label">ลงทะเบียน</span>
                     <span class="indicator-progress"
-                      >Please wait...
+                      >ลงทะเบียน...
                       <span
                         class="spinner-border spinner-border-sm align-middle ms-2"
                       ></span
@@ -409,6 +425,15 @@
           validation.validate().then((fv) => {
             console.log(`validate: ${fv}`);
             if ("Valid" == fv) {
+              button = $(event.target);
+              button.attr("data-kt-indicator", "on");
+              button.prop("disabled", true);
+              // Disable indicator after 3 seconds
+              setTimeout(function () {
+                button.removeAttr("data-kt-indicator");
+                button.prop("disabled", false);
+              }, 3000);
+
               let request_body = new FormData(
                 document.querySelector("#tradehatang_form")
               );
