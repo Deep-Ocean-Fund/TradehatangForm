@@ -198,16 +198,20 @@
               <div class="row mb-5">
                 <div class="col-md-12 fv-row">
                   <label for="telegram" class="required fs-3 fw-semibold mb-2"
-                    >Telegram</label
+                    >Telegram ID</label
                   ><span class="text-gray-600 text-xs">
                     (เพื่อใช้เข้าห้อง Signal)</span
                   >
+                  <div class="d-block mb-2 text-danger fw-bold">
+                    หมายเหตุ: Telegram ID จะไม่ใช่ username ของผู้ใช้ โดย ID
+                    จะเป็นข้อความที่เป็นตัวเลขทั้งหมด
+                  </div>
                   <a
                     href="assets/media/create_telegram_account.pdf"
                     target="_blank"
                     title="ขั้นตอนสมัคร Telegram"
                     class="d-block mb-2"
-                    >ขั้นตอนสมัคร Telegram</a
+                    >ขั้นตอนสมัคร Telegram และวิธีการหา Telegram ID</a
                   >
                   <input
                     type="text"
@@ -219,7 +223,7 @@
               </div>
               <div class="row mb-5">
                 <div class="col-md-12 fv-row">
-                  <label for="telegram" class="fs-3 fw-semibold mb-2"
+                  <label class="fs-3 fw-semibold mb-2"
                     >คุณมีประสบการณ์ในการลงทุนในสินทรัพย์ประเภทใดบ้าง</label
                   >
                   <label for="invest_stock" class="form-check mb-5">
@@ -671,7 +675,12 @@
             telegram: {
               validators: {
                 notEmpty: {
-                  message: "กรุณากรอก Telegram",
+                  message:
+                    'กรุณากรอก Telegram ID สามารถอ่านขั้นตอนการหา Telegram ID ได้จาก <a href="assets/media/create_telegram_account.pdf" target="_blank" title="ขั้นตอนสมัคร Telegram" class="">ขั้นตอนสมัคร Telegram และวิธีการหา Telegram ID</a>',
+                },
+                integer: {
+                  message:
+                    'กรุณากรอกเฉพาะตัวเลข สามารถอ่านขั้นตอนการหา Telegram ID ได้จาก <a href="assets/media/create_telegram_account.pdf" target="_blank" title="ขั้นตอนสมัคร Telegram" class="">ขั้นตอนสมัคร Telegram และวิธีการหา Telegram ID</a>',
                 },
               },
             },
