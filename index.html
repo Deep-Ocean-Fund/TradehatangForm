@@ -347,8 +347,13 @@
                     id="product"
                   >
                     <option value="">เลือกบริการ</option>
-                    <option value="signal free">Signal Free</option>
-                    <option value="signal premium">Signal Premium</option>
+                    <option value="stock signal free">Stock Signal Free</option>
+                    <option value="stock signal premium">
+                      Stock Signal Premium
+                    </option>
+                    <option value="tfex signal premium">
+                      TFEX Signal Premium
+                    </option>
                   </select>
                 </div>
               </div>
@@ -524,7 +529,7 @@
       function handleProduct(product) {
         if (product.length > 0) {
           if (
-            product.localeCompare("signal free", undefined, {
+            product.localeCompare("stock signal free", undefined, {
               sensitivity: "base",
             }) === 0
           ) {
@@ -533,7 +538,16 @@
             $("#broker").show();
             $("#accept_risk").show();
           } else if (
-            product.localeCompare("signal premium", undefined, {
+            product.localeCompare("stock signal premium", undefined, {
+              sensitivity: "base",
+            }) === 0
+          ) {
+            validation.enableValidator("period");
+            $("#period").show();
+            $("#broker").hide();
+            $("#accept_risk").show();
+          } else if (
+            product.localeCompare("tfex signal premium", undefined, {
               sensitivity: "base",
             }) === 0
           ) {
